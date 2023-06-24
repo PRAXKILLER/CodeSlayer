@@ -10,13 +10,14 @@ import cors from "cors";
 import helmet from "helmet";
 
 import db from "./database/index.js";
+import router from "./routes/index.js";
 
 const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-// app.use('/url', router)
+app.use('/codeslayer', router)
 
 app.listen(process.env.PORT, () => {
   db()
@@ -28,3 +29,5 @@ app.listen(process.env.PORT, () => {
       console.log(error);
     });
 });
+
+// http://localhost:4000/codeslayer/auth/signin
