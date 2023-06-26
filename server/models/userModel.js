@@ -8,10 +8,11 @@ const userSchema = mongoose.Schema(
     userName: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    solved_problems : [{type: mongoose.Types.ObjectId, ref: 'problems'}],
+    solved_problems: [{ type: mongoose.Types.ObjectId, ref: "problems" }],
     role: {
       type: String,
       enum: ["User", "Admin", "Owner"],
+      default: "User",
     },
   },
   {
@@ -41,28 +42,22 @@ userSchema.statics.findByEmailOrUsernameAndPassword = async ({
 }) => {
   if (email) {
     const user = await UserModel.findOne({ email });
-    if (!user)
-        throw new Error("User does not exists");
+    if (!user) throw new Error("User does not exists");
 
     // Compare password
     const doesPasswordMatch = await bcrypt.compare(password, user.password);
 
-    if (!doesPasswordMatch)
-        throw new Error("Invalid Password !!!");
+    if (!doesPasswordMatch) throw new Error("Invalid Password !!!");
 
     return user;
-  }
-  else
-  {
+  } else {
     const user = await UserModel.findOne({ userName });
-    if (!user)
-        throw new Error("User does not exists");
+    if (!user) throw new Error("User does not exists");
 
     // Compare password
     const doesPasswordMatch = await bcrypt.compare(password, user.password);
 
-    if (!doesPasswordMatch)
-        throw new Error("Invalid Password !!!");
+    if (!doesPasswordMatch) throw new Error("Invalid Password !!!");
 
     return user;
   }
