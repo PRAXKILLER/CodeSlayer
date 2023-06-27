@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { signin } from "../../redux/reducers/auth/authActions";
 
 function LoginForm({ setIsLogin }) {
+  
   function isLoginHandler() {
     setIsLogin(false);
   }
@@ -46,7 +47,7 @@ function LoginForm({ setIsLogin }) {
     <div className="">
       <h1 className="text-2xl">Sign In</h1>
       <p>Sign in to your account</p>
-      <div className="flex flex-col items-start w-full p-5 my-5 bg-white rounded-lg">
+      <div className="flex flex-col items-start w-full p-5 my-5 bg-white rounded-lg shadow-2xl">
         <InputWithLabel
           type={"text"}
           label={"Enter your Email or Username"}

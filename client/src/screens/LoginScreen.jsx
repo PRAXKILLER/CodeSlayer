@@ -7,7 +7,7 @@ function LoginScreen() {
   const [isLogin, setIsLogin] = useState(true);
   return (
     <div
-      className="flex flex-col w-full h-screen"
+      className="flex flex-col w-full min-h-screen"
       style={{ fontFamily: "cursive" }}
     >
       <div className="flex h-40">

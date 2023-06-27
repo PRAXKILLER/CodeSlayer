@@ -4,10 +4,11 @@ import {
   addASolution,
   getAllSolutionsForAParticularUserForAProblem,
 } from "../controllers/solutionsController.js";
+import passport from "passport";
 
 const router = express.Router();
 
-router.post("/add", addASolution);
+router.post("/add", passport.authenticate("jwt"), addASolution);
 router.get(
   "/get/:problemId/:userId",
   getAllSolutionsForAParticularUserForAProblem
