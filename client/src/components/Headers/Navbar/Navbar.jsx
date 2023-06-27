@@ -7,10 +7,10 @@ import { FaUserSecret } from "react-icons/fa";
 
 function Navbar() {
   return (
-    <div className="w-full bg-gray-950 py-5 px-10 h-1/4">
-      <div className="w-full flex justify-between">
-        <img src={require("../../../images/logo.png")} className="w-48" />
-        <div className="flex justify-center items-center text-white">
+    <div className="w-full px-10 py-5 bg-gray-950 h-1/4">
+      <div className="flex justify-between w-full">
+        <img src={require("../../../images/logo.png")} className="w-56" />
+        <div className="flex items-center justify-center text-white">
           <NavbarElement label="Home" id="home">
             <AiFillHome size={20} className="mr-2" />
           </NavbarElement>
