@@ -3,7 +3,11 @@ import { SolutionsModel } from "../models/solutionsModel.js";
 const addASolution = async (req, res) => {
   try {
     const solutionData = req.body;
-    const solution = await SolutionsModel.create(solutionData);
+    const _id = req.session.passport.user._doc._id;
+    const solution = await SolutionsModel.create({
+      submittedBy: _id,
+      ...solutionData,
+    });
     return res.status(200).json({ solution });
   } catch (error) {
     console.log(error);

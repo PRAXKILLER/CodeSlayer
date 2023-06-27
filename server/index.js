@@ -8,16 +8,40 @@ require("dotenv").config();
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import passport from "passport";
+import session from "express-session";
 
 import db from "./database/index.js";
 import router from "./routes/index.js";
+
+import routeConfig from "./config/routeConfig.js";
+
+routeConfig(passport);
 
 const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: "CodeSlayer",
+  })
+);
 
-app.use('/codeslayer', router)
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
+
+app.use("/codeslayer", router);
 
 app.listen(process.env.PORT, () => {
   db()

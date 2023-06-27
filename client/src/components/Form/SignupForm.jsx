@@ -25,7 +25,7 @@ function SignupForm({ setIsLogin }) {
     <div className="">
       <h1 className="text-2xl">Sign Up</h1>
       <p>Enter your details.</p>
-      <div className="flex flex-col items-start w-full p-5 my-5 bg-white rounded-lg">
+      <div className="flex flex-col items-start w-full p-5 my-5 bg-white rounded-lg shadow-2xl">
         <InputWithLabel
           type={"text"}
           label={"Enter your Email"}
