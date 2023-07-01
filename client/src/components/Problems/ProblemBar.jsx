@@ -2,9 +2,9 @@ import classNames from "classnames";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ProblemBar({ number, name, difficulty }) {
+function ProblemBar({ number, name, _id, difficulty }) {
   return (
-    <Link to={`/problem/${name}`} className="w-full cursor-pointer hover:bg-purple-700 shadow-xl p-4 bg-white flex flex-row justify-between text-base mt-2 rounded-lg items-center">
+    <Link to={`/problem/${_id}`} className="flex flex-row items-center justify-between w-full p-4 mt-2 text-base bg-white rounded-lg shadow-xl cursor-pointer hover:bg-purple-700">
       <div className="flex flex-row">
         <h1 className="">
           {number}{".)"}

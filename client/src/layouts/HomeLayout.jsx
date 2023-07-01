@@ -4,7 +4,7 @@ import Navbar from "../components/Headers/Navbar/Navbar";
 function HomeLayout({ children }) {
   return (
     <div
-      className="w-full flex flex-col min-h-screen"
+      className="flex flex-col w-full min-h-screen bg-gray-400 h-fit"
       style={{ fontFamily: "cursive" }}
     >
       <Navbar />

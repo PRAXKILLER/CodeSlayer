@@ -16,9 +16,16 @@ function SignupForm({ setIsLogin }) {
 
   const dispatch = useDispatch();
 
+  const [errorMessage, setErrorMessage] = useState();
+
   function onSignUp() {
     console.log(userData);
-    dispatch(signup(userData));
+    dispatch(signup(userData)).then((data) => {
+      if (data.type == "ERROR") {
+        console.log(data.payload.response.data)
+        setErrorMessage(data.payload.response.data.error);
+      }
+    });
   }
 
   return (
@@ -26,6 +33,13 @@ function SignupForm({ setIsLogin }) {
       <h1 className="text-2xl">Sign Up</h1>
       <p>Enter your details.</p>
       <div className="flex flex-col items-start w-full p-5 my-5 bg-white rounded-lg shadow-2xl">
+        <InputWithLabel
+          type={"text"}
+          label={"Enter your Name"}
+          palceholder={"Name"}
+          handleChange={handleChange}
+          id={"name"}
+        />
         <InputWithLabel
           type={"text"}
           label={"Enter your Email"}
@@ -50,6 +64,11 @@ function SignupForm({ setIsLogin }) {
         <div className="flex justify-center w-full mb-4">
           <h1 className="text-blue-600">Forgot Password ?</h1>
         </div>
+        {errorMessage && (
+          <div className="flex justify-center w-full">
+            <p className="text-red-700">{errorMessage}</p>
+          </div>
+        )}
         <CustomButton
           onPress={onSignUp}
           text={"Sign Up"}
