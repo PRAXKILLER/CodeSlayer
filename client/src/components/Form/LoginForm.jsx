@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { signin } from "../../redux/reducers/auth/authActions";
 
 function LoginForm({ setIsLogin }) {
-  
   function isLoginHandler() {
     setIsLogin(false);
   }
@@ -38,9 +37,15 @@ function LoginForm({ setIsLogin }) {
 
   const dispatch = useDispatch();
 
+  const [errorMessage, setErrorMessage] = useState();
+
   function onLogin() {
     console.log(userData);
-    dispatch(signin(userData));
+    dispatch(signin(userData)).then((data) => {
+      if (data.type == "ERROR") {
+        setErrorMessage(data.payload.response.data.error);
+      }
+    });
   }
 
   return (
@@ -65,6 +70,7 @@ function LoginForm({ setIsLogin }) {
         <div className="flex justify-center w-full mb-4">
           <h1 className="text-blue-600">Forgot Password ?</h1>
         </div>
+        {errorMessage && <div className="flex justify-center w-full"><p className="text-red-700">{errorMessage}</p></div>}
         <CustomButton
           text={"Sign In"}
           bgColor={"black"}

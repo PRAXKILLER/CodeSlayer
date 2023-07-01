@@ -1,6 +1,6 @@
 import { GET_PROBLEMS_LIST, GET_PROBLEM_BY_ID } from "./problemsTypes.js";
 
-const initialState = { problems: {} };
+const initialState = { problems: [], problem: {} };
 
 const problemsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -12,6 +12,7 @@ const problemsReducer = (state = initialState, action) => {
     case GET_PROBLEM_BY_ID:
       return {
         ...state,
+        problem: action.payload,
       };
     default:
       return {
