@@ -24,7 +24,8 @@
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",

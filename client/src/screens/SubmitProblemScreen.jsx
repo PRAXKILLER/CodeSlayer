@@ -17,15 +17,18 @@ function SubmitProblemScreen() {
       setProblem(data.payload.data.problem);
     });
   }, []);
-  
+
   return (
     <div className="w-full h-screen text-white bg-zinc-900">
-      <div className="" style={{height: '13%'}}>
+      <div className="" style={{ height: "13%" }}>
         <LogoHeaderArea />
       </div>
-      <div className="flex flex-row w-full h-5/6" style={{ fontFamily: "cursive" }}>
+      <div
+        className="flex flex-row w-full h-5/6"
+        style={{ fontFamily: "cursive" }}
+      >
         <ProblemDescription problem={problem} />
-        <CompilerArea />
+        <CompilerArea problemId={_id} />
       </div>
     </div>
   );
