@@ -108,7 +108,7 @@ const submitAProblem = async (req, res) => {
         const solution = await SolutionsModel.create({
           problem: problemId,
           verdict: "Fail",
-          message: `Wrong Answer on testcase ${index + 1}`,
+          message: `Wrong Answer on testcase ${i`` + 1}`,
           submittedBy: userId,
           submittedAt: new Date(),
         });
