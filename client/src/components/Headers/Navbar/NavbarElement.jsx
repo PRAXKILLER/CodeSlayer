@@ -15,7 +15,7 @@ function NavbarElement({ label, children, id }) {
       )}
     >
       {children}
-      <h1 className="text-xl">{label}</h1>
+      <h1 className="text-xl hidden sm:block">{label}</h1>
     </Link>
   );
 }

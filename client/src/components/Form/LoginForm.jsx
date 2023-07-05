@@ -40,8 +40,8 @@ function LoginForm({ setIsLogin }) {
   const [errorMessage, setErrorMessage] = useState();
 
   function onLogin() {
-    console.log(userData);
     dispatch(signin(userData)).then((data) => {
+      console.log(data);
       if (data.type == "ERROR") {
         setErrorMessage(data.payload.response.data.error);
       }

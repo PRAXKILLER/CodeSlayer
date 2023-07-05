@@ -47,9 +47,9 @@ const runAProblem = async (req, res) => {
       return res.status(404).json({ success: false, error: "Empty code !!" });
     }
 
+    const filePath = await generateFile(language, code);
     for (let i = 0; i < testcases.length; i++) {
       const testcase = testcases[i];
-      const filePath = await generateFile(language, code);
       const output = await executeCpp(filePath, testcase.input);
       const pureStringOutout = output.replace(/(?:\r\n|\r|\n)/g, "");
       const pureStringtestcaseOutput = testcase.output.replace(
@@ -112,7 +112,7 @@ const submitAProblem = async (req, res) => {
           submittedBy: userId,
           submittedAt: new Date(),
         });
-        return res.staus(200).json({ solution });
+        return res.status(200).json({ solution });
       }
     }
     const solution = await SolutionsModel.create({
